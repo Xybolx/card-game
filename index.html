@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAR</title>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+    <style>
+        #deck {
+            width: 100%;
+            margin: 20px auto;
+            background: transparent;
+            border: solid 10px black;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .card {
+            padding: 10px;
+            border: solid 1px #808080;
+            background-color: white;
+            display: inline-block;
+            border-radius: 10px;
+            font-size: 10pt;
+            text-align: center;
+            color: black;
+            margin: 3px;
+        }
+
+        .btn,
+        #draw,
+        #drawCPU {
+            background: black;
+            color: red;
+            padding: 10px 20px;
+            border: solid whitesmoke;
+            border-radius: 30px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .card .value {
+            font-size: 15pt;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        .card .suit {
+            background-image: url('http://www.thatsoftwaredude.com/images/post/0f631eeb-6c4a-4bfd-9f86-e0a08ae8584b.png');
+            height: 90px;
+            width: 80px;
+        }
+
+        .card .diamonds {
+            background-position-y: 95px;
+            color: red;
+        }
+
+        .card .hearts {
+            background-position-x: 88px;
+            color: red;
+        }
+
+        .card .clubs {
+            background-position-x: 88px;
+            background-position-y: 100px;
+            color: black;
+        }
+
+        .card .spades {
+            color: black;
+        }
+
+
+        .jumbotron {
+            background: darkgreen;
+        }
+
+        #play-field {
+            border: solid 10px black;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: yellow;
+            text-shadow: 1px 1px whitesmoke;
+
+        }
+
+        a {
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid text-center">
+        <div class="container">
+            <div class="">
+                <h1>War? What Is It Good For?</h1>
+                <div id="play-field" class="jumbotron jumbotron-fluid text-center">
+                    <a id="draw" class=""><h2> Draw Cards </h2></a>
+                    <div class="container">
+                        <div class="hand">
+                            <h1><span id="whoWins"></span></h1>
+                            <h1> Your Wins: <span id="yourWins"></span> </h1>
+                            <h1> CPU Wins: <span id="cpuWins"></span> </h1>
+                            <div id="compare"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="deck">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCM_tKjM5bnm8Y4YYuT8ysLqEJz6nGZJ4M",
+            authDomain: "cards-9bc89.firebaseapp.com",
+            databaseURL: "https://cards-9bc89.firebaseio.com",
+            projectId: "cards-9bc89",
+            storageBucket: "",
+            messagingSenderId: "476453356015"
+        };
+        firebase.initializeApp(config);
+        var db = firebase.database();
+
+
+        var deck = [];
+        var suits = ["spades", "diamonds", "clubs", "hearts"];
+        var values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+        var hand = [];
+        var cpuHand = [];
+        var compare = [];
+        var randomCard;
+        var yourWins = 0;
+        var cpuWins = 0;
+
+        function getDeck() {
+            var deck = [];
+
+            for (var i = 0; i < suits.length; i++) {
+                for (var x = 0; x < values.length; x++) {
+                    var card = { Value: values[x], Suit: suits[i] };
+                    deck.push(card);
+                }
+            }
+
+            return deck;
+        }
+
+
+
+
+        function renderDeck() {
+            document.getElementById("deck").innerHTML = "";
+
+            for (var i = 0; i < deck.length; i++) {
+                var card = document.createElement("div");
+                var value = document.createElement("div");
+                var suit = document.createElement("div");
+                card.className = "card";
+                value.className = "value " + deck[i].Suit;
+                suit.className = "suit " + deck[i].Suit;
+
+                value.innerHTML = deck[i].Value;
+                // suit.innerHTML = deck[i].Suit;
+                card.appendChild(value);
+                card.appendChild(suit);
+
+                document.getElementById("deck").appendChild(card);
+            }
+        }
+
+
+        $("#draw").on("click", function () {
+            var randomCard = deck[Math.floor(Math.random() * deck.length)];
+            var randomCPUcard = deck[Math.floor(Math.random() * deck.length)];
+            console.log(randomCard);
+            compare.push(randomCard);
+            console.log(hand);
+            var dex = deck.indexOf(randomCard);
+            console.log(dex);
+            deck.splice(dex, 1);
+            // console.log(deck);
+            console.log(randomCPUcard);
+            compare.push(randomCPUcard);
+            console.log(compare);
+            console.log(Object.values(randomCard));
+            console.log(Object.values(randomCPUcard));
+            var cardValue = Object.values(randomCard);
+            var cpuValue = Object.values(randomCPUcard);
+
+            if (cpuValue > cardValue) {
+                $("#whoWins").text("CPU Wins!");
+                cpuWins++;
+                $("#cpuWins").text(cpuWins);
+            }
+            if (cpuValue < cardValue) {
+                $("#whoWins").text("You Win!");
+                yourWins++;
+                $("#yourWins").text(yourWins);
+            }
+
+            console.log(cpuHand);
+            var dexCPU = deck.indexOf(randomCPUcard);
+            console.log(dexCPU);
+            deck.splice(dexCPU, 1);
+            console.log(deck);
+            // renderDeck();
+            // renderCPUHand();
+            renderDeck();
+            compareHands();
+            db.ref("/deck").update({
+                deck
+
+            })
+
+
+
+
+
+
+
+
+        });
+
+
+
+
+
+        // $("#drawCPU").on("click", function () {
+        //     var randomCPUcard = deck[Math.floor(Math.random() * deck.length)];
+        //     console.log(randomCPUcard);
+        //     cpuHand.push(randomCPUcard);
+        //     console.log(cpuHand);
+        //     var dex = deck.indexOf(randomCPUcard);
+        //     console.log(dex);
+        //     deck.splice(dex, 1);
+        //     console.log(deck);
+        //     renderDeck();
+        //     renderCPUHand();
+        //     db.ref("/deck").update({
+        //         deck
+
+        //     })
+
+        // });
+
+
+
+
+        function compareHands() {
+            document.getElementById("compare").innerHTML = "";
+
+            for (var i = 0; i < compare.length; i++) {
+
+                var handCard = document.createElement("div");
+                var handValue = document.createElement("div");
+                var handSuit = document.createElement("div");
+                handCard.className = "card";
+                handValue.className = "value " + compare[i].Suit;
+                handSuit.className = "suit " + compare[i].Suit;
+
+                handValue.innerHTML = compare[i].Value;
+                // handSuit.innerHTML = compare[i].Suit;
+                handCard.appendChild(handValue);
+                handCard.appendChild(handSuit);
+
+
+                document.getElementById("compare").appendChild(handCard);
+
+            }
+        }
+
+
+        function renderCPUHand() {
+            document.getElementById("cpuHand").innerHTML = "";
+
+            for (var i = 0; i < cpuHand.length; i++) {
+                var cpuHandCard = document.createElement("div");
+                var cpuHandValue = document.createElement("div");
+                var cpuHandSuit = document.createElement("div");
+                cpuHandCard.className = "card";
+                cpuHandValue.className = "value";
+                cpuHandSuit.className = "suit " + cpuHand[i].Suit;
+
+                cpuHandValue.innerHTML = cpuHand[i].Value;
+                cpuHandSuit.innerHTML = cpuHand[i].Suit;
+                cpuHandCard.appendChild(cpuHandValue);
+                cpuHandCard.appendChild(cpuHandSuit);
+
+                document.getElementById("cpuHand").appendChild(cpuHandCard);
+
+
+            }
+        }
+
+        // function compareHands() {
+        //     for(var i = 0; i < cpuHand.length; i++) {
+        //         console.log(cpuHand);
+        //     }
+        //     for(var i = 0; i < hand.length; i++) {
+        //         console.log(hand);
+        //     }
+
+        //     if (hand > cpuHand) {
+        //         console.log("player wins!");
+        //     }
+
+        //     if (hand < cpuHand) {
+        //         console.log("player loses!");
+        //     }
+
+        // }
+
+
+
+        function load() {
+            deck = getDeck();
+            // shuffle();
+            renderDeck();
+            console.log(deck);
+        }
+
+        window.onload = load;
+
+
+    </script>
+
+</body>
+
+</html>
