@@ -37,7 +37,7 @@
 
         .btn,
         #draw,
-        #drawCPU {
+        #reset {
             background: black;
             color: red;
             padding: 10px 20px;
@@ -108,12 +108,17 @@
             <div class="">
                 <h1>War? What Is It Good For?</h1>
                 <div id="play-field" class="jumbotron jumbotron-fluid text-center">
-                    <a id="draw" class=""><h2> Draw Cards </h2></a>
                     <div class="container">
                         <div class="hand">
                             <h1><span id="whoWins"></span></h1>
                             <h1> Your Wins: <span id="yourWins"></span> </h1>
                             <h1> CPU Wins: <span id="cpuWins"></span> </h1>
+                            <a id="reset" class="">
+                                <h2> Play Again </h2>
+                            </a>
+                            <a id="draw" class="">
+                                <h2> Draw Cards </h2>
+                            </a>
                             <div id="compare"></div>
                         </div>
                     </div>
@@ -143,17 +148,17 @@
         firebase.initializeApp(config);
         var db = firebase.database();
 
-
+        // assign variables to arrays and counters
         var deck = [];
         var suits = ["spades", "diamonds", "clubs", "hearts"];
         var values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-        var hand = [];
-        var cpuHand = [];
         var compare = [];
         var randomCard;
+        var randomCPUcard;
         var yourWins = 0;
         var cpuWins = 0;
 
+        // populate the deck array
         function getDeck() {
             var deck = [];
 
@@ -169,7 +174,7 @@
 
 
 
-
+        // append suits and values to cards, append the deck to a div
         function renderDeck() {
             document.getElementById("deck").innerHTML = "";
 
@@ -182,7 +187,6 @@
                 suit.className = "suit " + deck[i].Suit;
 
                 value.innerHTML = deck[i].Value;
-                // suit.innerHTML = deck[i].Suit;
                 card.appendChild(value);
                 card.appendChild(suit);
 
@@ -190,17 +194,15 @@
             }
         }
 
-
+        // on click event that draws a card for the player and the CPU, pushes them to the compare array, drops them from the deck array
         $("#draw").on("click", function () {
             var randomCard = deck[Math.floor(Math.random() * deck.length)];
             var randomCPUcard = deck[Math.floor(Math.random() * deck.length)];
             console.log(randomCard);
             compare.push(randomCard);
-            console.log(hand);
             var dex = deck.indexOf(randomCard);
             console.log(dex);
             deck.splice(dex, 1);
-            // console.log(deck);
             console.log(randomCPUcard);
             compare.push(randomCPUcard);
             console.log(compare);
@@ -208,25 +210,36 @@
             console.log(Object.values(randomCPUcard));
             var cardValue = Object.values(randomCard);
             var cpuValue = Object.values(randomCPUcard);
-
-            if (cpuValue > cardValue) {
-                $("#whoWins").text("CPU Wins!");
-                cpuWins++;
-                $("#cpuWins").text(cpuWins);
-            }
-            if (cpuValue < cardValue) {
-                $("#whoWins").text("You Win!");
-                yourWins++;
-                $("#yourWins").text(yourWins);
-            }
-
-            console.log(cpuHand);
             var dexCPU = deck.indexOf(randomCPUcard);
             console.log(dexCPU);
             deck.splice(dexCPU, 1);
             console.log(deck);
             renderDeck();
             compareHands();
+            // conditional statement that determines the winner and displays winning info
+            if (cpuValue > cardValue) {
+                $("#whoWins").text("CPU Wins!");
+                $("#whoWins").show();
+                setTimeout(function() {
+                
+                $("#whoWins").fadeOut(1500);
+        
+            },3000);
+                cpuWins++;
+                $("#cpuWins").text(cpuWins);
+            }
+            if (cpuValue < cardValue) {
+                $("#whoWins").text("You Win!");
+                $("#whoWins").show();
+                setTimeout(function() {
+                
+                $("#whoWins").fadeOut(1500);
+        
+            },3000);
+                yourWins++;
+                $("#yourWins").text(yourWins);
+            }
+
             db.ref("/deck").update({
                 deck
 
@@ -234,6 +247,7 @@
 
         });
 
+        // function that renders drawn cards from the compare array
         function compareHands() {
             document.getElementById("compare").innerHTML = "";
 
@@ -247,7 +261,6 @@
                 handSuit.className = "suit " + compare[i].Suit;
 
                 handValue.innerHTML = compare[i].Value;
-                // handSuit.innerHTML = compare[i].Suit;
                 handCard.appendChild(handValue);
                 handCard.appendChild(handSuit);
 
@@ -257,65 +270,21 @@
             }
         }
 
+        // on click event for button to reset page to play again
+        $("#reset").on("click", function () {
+            load();
+        });
 
-
-
-        
-
-
-
-
-
-        // function renderCPUHand() {
-        //     document.getElementById("cpuHand").innerHTML = "";
-
-        //     for (var i = 0; i < cpuHand.length; i++) {
-        //         var cpuHandCard = document.createElement("div");
-        //         var cpuHandValue = document.createElement("div");
-        //         var cpuHandSuit = document.createElement("div");
-        //         cpuHandCard.className = "card";
-        //         cpuHandValue.className = "value";
-        //         cpuHandSuit.className = "suit " + cpuHand[i].Suit;
-
-        //         cpuHandValue.innerHTML = cpuHand[i].Value;
-        //         cpuHandSuit.innerHTML = cpuHand[i].Suit;
-        //         cpuHandCard.appendChild(cpuHandValue);
-        //         cpuHandCard.appendChild(cpuHandSuit);
-
-        //         document.getElementById("cpuHand").appendChild(cpuHandCard);
-
-
-        //     }
-        // }
-
-        // function compareHands() {
-        //     for(var i = 0; i < cpuHand.length; i++) {
-        //         console.log(cpuHand);
-        //     }
-        //     for(var i = 0; i < hand.length; i++) {
-        //         console.log(hand);
-        //     }
-
-        //     if (hand > cpuHand) {
-        //         console.log("player wins!");
-        //     }
-
-        //     if (hand < cpuHand) {
-        //         console.log("player loses!");
-        //     }
-
-        // }
-
-
-
+        // function to get and render deck on window load
         function load() {
             deck = getDeck();
-            // shuffle();
             renderDeck();
-            console.log(deck);
+            yourWins = 0;
+            cpuWins = 0;
         }
 
         window.onload = load;
+        $("#whoWins").hide();
 
 
     </script>
