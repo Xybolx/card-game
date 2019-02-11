@@ -225,8 +225,6 @@
             console.log(dexCPU);
             deck.splice(dexCPU, 1);
             console.log(deck);
-            // renderDeck();
-            // renderCPUHand();
             renderDeck();
             compareHands();
             db.ref("/deck").update({
@@ -234,39 +232,7 @@
 
             })
 
-
-
-
-
-
-
-
         });
-
-
-
-
-
-        // $("#drawCPU").on("click", function () {
-        //     var randomCPUcard = deck[Math.floor(Math.random() * deck.length)];
-        //     console.log(randomCPUcard);
-        //     cpuHand.push(randomCPUcard);
-        //     console.log(cpuHand);
-        //     var dex = deck.indexOf(randomCPUcard);
-        //     console.log(dex);
-        //     deck.splice(dex, 1);
-        //     console.log(deck);
-        //     renderDeck();
-        //     renderCPUHand();
-        //     db.ref("/deck").update({
-        //         deck
-
-        //     })
-
-        // });
-
-
-
 
         function compareHands() {
             document.getElementById("compare").innerHTML = "";
@@ -292,27 +258,35 @@
         }
 
 
-        function renderCPUHand() {
-            document.getElementById("cpuHand").innerHTML = "";
-
-            for (var i = 0; i < cpuHand.length; i++) {
-                var cpuHandCard = document.createElement("div");
-                var cpuHandValue = document.createElement("div");
-                var cpuHandSuit = document.createElement("div");
-                cpuHandCard.className = "card";
-                cpuHandValue.className = "value";
-                cpuHandSuit.className = "suit " + cpuHand[i].Suit;
-
-                cpuHandValue.innerHTML = cpuHand[i].Value;
-                cpuHandSuit.innerHTML = cpuHand[i].Suit;
-                cpuHandCard.appendChild(cpuHandValue);
-                cpuHandCard.appendChild(cpuHandSuit);
-
-                document.getElementById("cpuHand").appendChild(cpuHandCard);
 
 
-            }
-        }
+        
+
+
+
+
+
+        // function renderCPUHand() {
+        //     document.getElementById("cpuHand").innerHTML = "";
+
+        //     for (var i = 0; i < cpuHand.length; i++) {
+        //         var cpuHandCard = document.createElement("div");
+        //         var cpuHandValue = document.createElement("div");
+        //         var cpuHandSuit = document.createElement("div");
+        //         cpuHandCard.className = "card";
+        //         cpuHandValue.className = "value";
+        //         cpuHandSuit.className = "suit " + cpuHand[i].Suit;
+
+        //         cpuHandValue.innerHTML = cpuHand[i].Value;
+        //         cpuHandSuit.innerHTML = cpuHand[i].Suit;
+        //         cpuHandCard.appendChild(cpuHandValue);
+        //         cpuHandCard.appendChild(cpuHandSuit);
+
+        //         document.getElementById("cpuHand").appendChild(cpuHandCard);
+
+
+        //     }
+        // }
 
         // function compareHands() {
         //     for(var i = 0; i < cpuHand.length; i++) {
