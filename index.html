@@ -98,6 +98,16 @@
         a {
             cursor: pointer;
         }
+
+        @keyframes color-change {
+             0% { color: red; }
+             50% { color: blue; }
+             100% { color: red; }
+        }
+
+        #whoWins {
+            animation: color-change 1s infinite;
+        }
     </style>
 
 </head>
@@ -113,9 +123,9 @@
                             <h1><span id="whoWins"></span></h1>
                             <h1> Your Wins: <span id="yourWins"></span> </h1>
                             <h1> CPU Wins: <span id="cpuWins"></span> </h1>
-                            <a id="reset" class="">
+                            <!-- <a id="reset" class="">
                                 <h2> Play Again </h2>
-                            </a>
+                            </a> -->
                             <a id="draw" class="">
                                 <h2> Draw Cards </h2>
                             </a>
@@ -193,9 +203,10 @@
                 document.getElementById("deck").appendChild(card);
             }
         }
-
+        
         // on click event that draws a card for the player and the CPU, pushes them to the compare array, drops them from the deck array
         $("#draw").on("click", function () {
+            $("#draw").hide(1500);
             var randomCard = deck[Math.floor(Math.random() * deck.length)];
             var randomCPUcard = deck[Math.floor(Math.random() * deck.length)];
             console.log(randomCard);
@@ -221,7 +232,7 @@
                 $("#whoWins").text("CPU Wins!");
                 $("#whoWins").show();
                 setTimeout(function() {
-                
+                $("#draw").show(1500);
                 $("#whoWins").fadeOut(1500);
         
             },3000);
@@ -232,7 +243,7 @@
                 $("#whoWins").text("You Win!");
                 $("#whoWins").show();
                 setTimeout(function() {
-                
+                $("#draw").show(1500);    
                 $("#whoWins").fadeOut(1500);
         
             },3000);
