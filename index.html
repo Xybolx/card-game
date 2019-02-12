@@ -22,7 +22,6 @@
             text-align: center;
             color: white;
         }
-
         .card {
             padding: 10px;
             border: solid 1px #808080;
@@ -34,10 +33,9 @@
             color: black;
             margin: 3px;
         }
-
         .btn,
         #draw,
-        #reset {
+        #drawCPU {
             background: black;
             color: red;
             padding: 10px 20px;
@@ -46,67 +44,45 @@
             margin: 10px;
             display: inline-block;
         }
-
         .card .value {
             font-size: 15pt;
             font-family: sans-serif;
             font-weight: bold;
         }
-
         .card .suit {
             background-image: url('http://www.thatsoftwaredude.com/images/post/0f631eeb-6c4a-4bfd-9f86-e0a08ae8584b.png');
             height: 90px;
             width: 80px;
         }
-
         .card .diamonds {
             background-position-y: 95px;
             color: red;
         }
-
         .card .hearts {
             background-position-x: 88px;
             color: red;
         }
-
         .card .clubs {
             background-position-x: 88px;
             background-position-y: 100px;
             color: black;
         }
-
         .card .spades {
             color: black;
         }
-
-
         .jumbotron {
             background: darkgreen;
         }
-
         #play-field {
             border: solid 10px black;
             border-radius: 10px;
         }
-
         h1 {
             color: yellow;
             text-shadow: 1px 1px whitesmoke;
-
         }
-
         a {
             cursor: pointer;
-        }
-
-        @keyframes color-change {
-             0% { color: red; }
-             50% { color: blue; }
-             100% { color: red; }
-        }
-
-        #whoWins {
-            animation: color-change 1s infinite;
         }
     </style>
 
@@ -118,17 +94,12 @@
             <div class="">
                 <h1>War? What Is It Good For?</h1>
                 <div id="play-field" class="jumbotron jumbotron-fluid text-center">
+                    <a id="draw" class=""><h2> Draw Cards </h2></a>
                     <div class="container">
                         <div class="hand">
                             <h1><span id="whoWins"></span></h1>
                             <h1> Your Wins: <span id="yourWins"></span> </h1>
                             <h1> CPU Wins: <span id="cpuWins"></span> </h1>
-                            <!-- <a id="reset" class="">
-                                <h2> Play Again </h2>
-                            </a> -->
-                            <a id="draw" class="">
-                                <h2> Draw Cards </h2>
-                            </a>
                             <div id="compare"></div>
                         </div>
                     </div>
@@ -144,8 +115,6 @@
 
 
     <script>
-
-
         // Initialize Firebase
         var config = {
             apiKey: "AIzaSyCM_tKjM5bnm8Y4YYuT8ysLqEJz6nGZJ4M",
@@ -155,23 +124,19 @@
             storageBucket: "",
             messagingSenderId: "476453356015"
         };
+
         firebase.initializeApp(config);
         var db = firebase.database();
-
-        // assign variables to arrays and counters
+        
         var deck = [];
         var suits = ["spades", "diamonds", "clubs", "hearts"];
         var values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
         var compare = [];
-        var randomCard;
-        var randomCPUcard;
         var yourWins = 0;
         var cpuWins = 0;
 
-        // populate the deck array
         function getDeck() {
             var deck = [];
-
             for (var i = 0; i < suits.length; i++) {
                 for (var x = 0; x < values.length; x++) {
                     var card = { Value: values[x], Suit: suits[i] };
@@ -182,12 +147,8 @@
             return deck;
         }
 
-
-
-        // append suits and values to cards, append the deck to a div
         function renderDeck() {
             document.getElementById("deck").innerHTML = "";
-
             for (var i = 0; i < deck.length; i++) {
                 var card = document.createElement("div");
                 var value = document.createElement("div");
@@ -195,111 +156,75 @@
                 card.className = "card";
                 value.className = "value " + deck[i].Suit;
                 suit.className = "suit " + deck[i].Suit;
-
                 value.innerHTML = deck[i].Value;
                 card.appendChild(value);
                 card.appendChild(suit);
-
                 document.getElementById("deck").appendChild(card);
             }
         }
-        
-        // on click event that draws a card for the player and the CPU, pushes them to the compare array, drops them from the deck array
+
         $("#draw").on("click", function () {
-            $("#draw").hide(1500);
             var randomCard = deck[Math.floor(Math.random() * deck.length)];
             var randomCPUcard = deck[Math.floor(Math.random() * deck.length)];
             console.log(randomCard);
-            compare.push(randomCard);
-            var dex = deck.indexOf(randomCard);
-            console.log(dex);
-            deck.splice(dex, 1);
             console.log(randomCPUcard);
+            compare.push(randomCard);
             compare.push(randomCPUcard);
             console.log(compare);
-            console.log(Object.values(randomCard));
-            console.log(Object.values(randomCPUcard));
-            var cardValue = Object.values(randomCard);
-            var cpuValue = Object.values(randomCPUcard);
+            compareHands();
+            var dex = deck.indexOf(randomCard);
             var dexCPU = deck.indexOf(randomCPUcard);
+            console.log(dex);
             console.log(dexCPU);
+            deck.splice(dex, 1);
             deck.splice(dexCPU, 1);
             console.log(deck);
             renderDeck();
-            compareHands();
-            // conditional statement that determines the winner and displays winning info
+            var cardValue = Object.values(randomCard);
+            var cpuValue = Object.values(randomCPUcard);
+            console.log(Object.values(randomCard));
+            console.log(Object.values(randomCPUcard));
             if (cpuValue > cardValue) {
                 $("#whoWins").text("CPU Wins!");
-                $("#whoWins").show();
-                setTimeout(function() {
-                $("#draw").show(1500);
-                $("#whoWins").fadeOut(1500);
-        
-            },3000);
                 cpuWins++;
                 $("#cpuWins").text(cpuWins);
             }
             if (cpuValue < cardValue) {
                 $("#whoWins").text("You Win!");
-                $("#whoWins").show();
-                setTimeout(function() {
-                $("#draw").show(1500);    
-                $("#whoWins").fadeOut(1500);
-        
-            },3000);
                 yourWins++;
                 $("#yourWins").text(yourWins);
             }
-
+            
             db.ref("/deck").update({
                 deck
-
             })
-
         });
 
-        // function that renders drawn cards from the compare array
         function compareHands() {
             document.getElementById("compare").innerHTML = "";
-
             for (var i = 0; i < compare.length; i++) {
-
                 var handCard = document.createElement("div");
                 var handValue = document.createElement("div");
                 var handSuit = document.createElement("div");
                 handCard.className = "card";
                 handValue.className = "value " + compare[i].Suit;
                 handSuit.className = "suit " + compare[i].Suit;
-
                 handValue.innerHTML = compare[i].Value;
                 handCard.appendChild(handValue);
                 handCard.appendChild(handSuit);
-
-
                 document.getElementById("compare").appendChild(handCard);
-
             }
         }
-
-        // on click event for button to reset page to play again
-        $("#reset").on("click", function () {
-            load();
-        });
-
-        // function to get and render deck on window load
+        
         function load() {
             deck = getDeck();
             renderDeck();
-            yourWins = 0;
-            cpuWins = 0;
+            console.log(deck);
         }
-
         window.onload = load;
-        $("#whoWins").hide();
-
-
     </script>
 
 </body>
 
 </html>
+        
