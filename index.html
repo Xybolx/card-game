@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WAR</title>
-    <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
@@ -22,6 +21,18 @@
             text-align: center;
             color: white;
         }
+
+        #deck2 {
+            width: 100%;
+            margin: 20px auto;
+            background: transparent;
+            border: solid 10px black;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+        }
+
         .card {
             padding: 10px;
             border: solid 1px #808080;
@@ -29,7 +40,7 @@
             display: inline-block;
             border-radius: 10px;
             font-size: 10pt;
-            text-align: center;
+            text-align: left;
             color: black;
             margin: 3px;
         }
@@ -51,8 +62,8 @@
         }
         .card .suit {
             background-image: url('http://www.thatsoftwaredude.com/images/post/0f631eeb-6c4a-4bfd-9f86-e0a08ae8584b.png');
-            height: 90px;
-            width: 80px;
+            height: 95px;
+            width: 85px;
         }
         .card .diamonds {
             background-position-y: 95px;
@@ -63,7 +74,7 @@
             color: red;
         }
         .card .clubs {
-            background-position-x: 88px;
+            background-position-x: 89px;
             background-position-y: 100px;
             color: black;
         }
@@ -84,23 +95,35 @@
         a {
             cursor: pointer;
         }
+
+        @keyframes color-change {
+             0% { color: red; }
+             50% { color: dodgerblue; }
+             100% { color: red; }
+             
+        }
+        #whoWins {
+            animation: color-change .5s infinite;
+        }
     </style>
 
 </head>
 
 <body>
+    <audio id="lewya" src="https://www.myinstants.com/media/sounds/hallelujahshort.swf.mp3"></audio>
+    <audio id="loser" src="https://www.myinstants.com/media/sounds/the-simpsons-nelsons-haha_Hr8OgOG.mp3"></audio>
     <div class="jumbotron jumbotron-fluid text-center">
         <div class="container">
             <div class="">
                 <h1>War? What Is It Good For?</h1>
                 <div id="play-field" class="jumbotron jumbotron-fluid text-center">
-                    <a id="draw" class=""><h2> Draw Cards </h2></a>
                     <div class="container">
                         <div class="hand">
                             <h1><span id="whoWins"></span></h1>
                             <h1> Your Wins: <span id="yourWins"></span> </h1>
                             <h1> CPU Wins: <span id="cpuWins"></span> </h1>
                             <div id="compare"></div>
+                            <a id="draw" class=""><h2> Draw </h2></a>
                         </div>
                     </div>
                 </div>
@@ -134,12 +157,11 @@
         var deck = [];
         var deck2 = [];
         var suits = ["spades", "diamonds", "clubs", "hearts"];
-        var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-        var graveYard = [];
+        var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"];
         var compare = [];
         var yourWins = 0;
         var cpuWins = 0;
-
+        
         function getDeck() {
             var deck = [];
             for (var i = 0; i < suits.length; i++) {
@@ -148,10 +170,10 @@
                     deck.push(card);
                 }
             }
-
+            
             return deck;
         }
-
+        
         function getDeck2() {
             var deck2 = [];
             for (var i = 0; i < suits.length; i++) {
@@ -160,10 +182,10 @@
                     deck2.push(card);
                 }
             }
-
+            
             return deck2;
         }
-
+        
         function renderDeck() {
             document.getElementById("deck").innerHTML = "";
             for (var i = 0; i < deck.length; i++) {
@@ -179,7 +201,7 @@
                 document.getElementById("deck").appendChild(card);
             }
         }
-
+        
         function renderDeck2() {
             document.getElementById("deck2").innerHTML = "";
             for (var i = 0; i < deck2.length; i++) {
@@ -195,8 +217,9 @@
                 document.getElementById("deck2").appendChild(card);
             }
         }
-
+        
         $("#draw").on("click", function () {
+            $("#draw").hide(3000);
             var randomCard = deck[Math.floor(Math.random() * deck.length)];
             var randomCPUcard = deck2[Math.floor(Math.random() * deck2.length)];
             console.log(randomCard);
@@ -215,26 +238,71 @@
             console.log(deck2);
             renderDeck();
             renderDeck2();
-            var cardValue = Object.values(randomCard);
-            var cpuValue = Object.values(randomCPUcard);
-            console.log(Object.values(randomCard));
-            console.log(Object.values(randomCPUcard));
-            if (cpuValue > cardValue) {
-                $("#whoWins").text("CPU Wins!!!");
-                cpuWins++;
-                $("#cpuWins").text(cpuWins);
-            }
-            if (cpuValue < cardValue) {
-                $("#whoWins").text("You Win!!!");
-                yourWins++;
-                $("#yourWins").text(yourWins);
-            }
+            var cardValue = parseInt(Object.values(randomCard));
+            var cpuValue = parseInt(Object.values(randomCPUcard));
+            console.log(cardValue);
+            console.log(cpuValue);
 
-            if (cpuValue === cardValue) {
-                $("#whoWins").text("Stalemate!!!");
+            if (cpuValue > cardValue) {
+                setTimeout(function() {
+                    $("#whoWins").show();
+                    $("#whoWins").text("CPU Wins!!!");
+                    $('#whoWins').animate({ fontSize: '150px' }, 1000);
+                    $('#whoWins').animate({ fontSize: '0px' }, 1000);
+                    $("#draw").show(3000);    
+                    $("#whoWins").fadeOut(1500);
+                    $("#loser")[0].play();
+                    cpuWins++;
+                    $("#cpuWins").text(cpuWins);
+                    
+            },3000);
+                deck2.push(randomCPUcard);
+                deck2.push(randomCard);
+                compare.splice(0, 2);
+                console.log(compare);
+                renderDeck2();
+        }
+            
+
+           if (cpuValue < cardValue) {
+               setTimeout(function() {
+                   $("#whoWins").show();
+                   $("#whoWins").text("You Win!!!");
+                   $('#whoWins').animate({ fontSize: '150px' }, 1000);
+                   $('#whoWins').animate({ fontSize: '0px' }, 1000);
+                   $("#draw").show(3000);    
+                   $("#whoWins").fadeOut(1500);
+                   yourWins++;
+                   $("#yourWins").text(yourWins);
+                   $("#lewya")[0].play(5000);
+                   
+                },3000);
+                deck.push(randomCPUcard);
+                deck.push(randomCard);
+                compare.splice(0, 2);
+                console.log(compare);
+                renderDeck();
+        }    
+                
+               if (cpuValue === cardValue) {
+                setTimeout(function() {
+                    $("#whoWins").show(1500);
+                    $("#whoWins").text("Stalemate!!!");
+                    $('#whoWins').animate({ fontSize: '150px' }, 1500);
+                    $('#whoWins').animate({ fontSize: '0px' }, 1500);
+                    $("#draw").show(3000);    
+                    $("#whoWins").fadeOut(1500);
+                    
+                },3000);
+                var graveYard = [];
                 graveYard.push(randomCard);
                 graveYard.push(randomCPUcard);
                 console.log(graveYard);
+                compare.splice(0, 2);
+                console.log(compare);
+                // compareHands();
+                renderDeck();
+                renderDeck2();
             }
             
             db.ref("/deck").update({
@@ -265,6 +333,7 @@
             renderDeck2();
             console.log(deck);
             console.log(deck2);
+            $("#whoWins").fadeOut();
         }
         window.onload = load;
     </script>
