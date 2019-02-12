@@ -107,6 +107,9 @@
                 <div id="deck">
 
                 </div>
+                <div id="deck2">
+
+                </div>
             </div>
         </div>
     </div>
@@ -128,9 +131,11 @@
         firebase.initializeApp(config);
         var db = firebase.database();
         
-        let deck = newDeck;
+        var deck = [];
+        var deck2 = [];
         var suits = ["spades", "diamonds", "clubs", "hearts"];
-        var values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+        var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+        var graveYard = [];
         var compare = [];
         var yourWins = 0;
         var cpuWins = 0;
@@ -145,6 +150,18 @@
             }
 
             return deck;
+        }
+
+        function getDeck2() {
+            var deck2 = [];
+            for (var i = 0; i < suits.length; i++) {
+                for (var x = 0; x < values.length; x++) {
+                    var card = { Value: values[x], Suit: suits[i] };
+                    deck2.push(card);
+                }
+            }
+
+            return deck2;
         }
 
         function renderDeck() {
@@ -163,9 +180,25 @@
             }
         }
 
+        function renderDeck2() {
+            document.getElementById("deck2").innerHTML = "";
+            for (var i = 0; i < deck2.length; i++) {
+                var card = document.createElement("div");
+                var value = document.createElement("div");
+                var suit = document.createElement("div");
+                card.className = "card";
+                value.className = "value " + deck2[i].Suit;
+                suit.className = "suit " + deck2[i].Suit;
+                value.innerHTML = deck2[i].Value;
+                card.appendChild(value);
+                card.appendChild(suit);
+                document.getElementById("deck2").appendChild(card);
+            }
+        }
+
         $("#draw").on("click", function () {
             var randomCard = deck[Math.floor(Math.random() * deck.length)];
-            var randomCPUcard = deck[Math.floor(Math.random() * deck.length)];
+            var randomCPUcard = deck2[Math.floor(Math.random() * deck2.length)];
             console.log(randomCard);
             console.log(randomCPUcard);
             compare.push(randomCard);
@@ -173,26 +206,35 @@
             console.log(compare);
             compareHands();
             var dex = deck.indexOf(randomCard);
-            var dexCPU = deck.indexOf(randomCPUcard);
+            var dexCPU = deck2.indexOf(randomCPUcard);
             console.log(dex);
             console.log(dexCPU);
             deck.splice(dex, 1);
-            deck.splice(dexCPU, 1);
+            deck2.splice(dexCPU, 1);
             console.log(deck);
+            console.log(deck2);
             renderDeck();
+            renderDeck2();
             var cardValue = Object.values(randomCard);
             var cpuValue = Object.values(randomCPUcard);
             console.log(Object.values(randomCard));
             console.log(Object.values(randomCPUcard));
             if (cpuValue > cardValue) {
-                $("#whoWins").text("CPU Wins!");
+                $("#whoWins").text("CPU Wins!!!");
                 cpuWins++;
                 $("#cpuWins").text(cpuWins);
             }
             if (cpuValue < cardValue) {
-                $("#whoWins").text("You Win!");
+                $("#whoWins").text("You Win!!!");
                 yourWins++;
                 $("#yourWins").text(yourWins);
+            }
+
+            if (cpuValue === cardValue) {
+                $("#whoWins").text("Stalemate!!!");
+                graveYard.push(randomCard);
+                graveYard.push(randomCPUcard);
+                console.log(graveYard);
             }
             
             db.ref("/deck").update({
@@ -218,8 +260,11 @@
         
         function load() {
             deck = getDeck();
+            deck2 = getDeck2();
             renderDeck();
+            renderDeck2();
             console.log(deck);
+            console.log(deck2);
         }
         window.onload = load;
     </script>
