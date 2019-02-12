@@ -2,7 +2,7 @@
 // =============================================================
 var express = require("express");
 var path = require("path");
-var card = require("card-deck");
+const Deck = require('card_deck');
 var mysql = require("mysql");
 
 
