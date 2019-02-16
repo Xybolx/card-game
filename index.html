@@ -16,6 +16,9 @@
             margin: 20px auto;
             background: transparent;
             border: solid 10px black;
+            outline-style: double;
+            outline-color: tomato;
+            outline-width: thick;
             padding: 10px;
             border-radius: 10px;
             text-align: center;
@@ -27,6 +30,9 @@
             margin: 20px auto;
             background: transparent;
             border: solid 10px black;
+            outline-style: double;
+            outline-color: tomato;
+            outline-width: thick;
             padding: 10px;
             border-radius: 10px;
             text-align: center;
@@ -44,64 +50,90 @@
             color: black;
             margin: 3px;
         }
-        .btn,
-        #draw,
-        #drawCPU {
+
+        
+        #draw {
             background: black;
             color: red;
             padding: 10px 20px;
             border: solid whitesmoke;
-            border-radius: 30px;
+            border-radius: 100%;
             margin: 10px;
             display: inline-block;
+            cursor: pointer;
         }
-        .card .value {
-            font-size: 15pt;
-            font-family: sans-serif;
-            font-weight: bold;
-        }
+
         .card .suit {
             background-image: url('http://www.thatsoftwaredude.com/images/post/0f631eeb-6c4a-4bfd-9f86-e0a08ae8584b.png');
             height: 95px;
             width: 85px;
         }
+
         .card .diamonds {
             background-position-y: 95px;
             color: red;
+            font-size: 15pt;
+            font-weight: bold;
         }
+
         .card .hearts {
             background-position-x: 88px;
             color: red;
+            font-size: 15pt;
+            font-weight: bold;
         }
+
         .card .clubs {
             background-position-x: 89px;
             background-position-y: 100px;
             color: black;
+            font-size: 15pt;
+            font-weight: bold;
         }
+
         .card .spades {
             color: black;
+            font-size: 15pt;
+            font-weight: bold;
         }
-        .jumbotron {
+
+
+        
+
+        #jumbo {
             background: darkgreen;
         }
+
         #play-field {
             border: solid 10px black;
             border-radius: 10px;
+            outline-style: double;
+            outline-color: tomato;
+            outline-width: thick;
+            background: transparent;
         }
+
         h1 {
             color: yellow;
-            text-shadow: 1px 1px whitesmoke;
-        }
-        a {
-            cursor: pointer;
+            text-shadow: 2px 2px whitesmoke;
+            
         }
 
         @keyframes color-change {
-             0% { color: red; }
-             50% { color: dodgerblue; }
-             100% { color: red; }
-             
+            0% {
+                color: red;
+            }
+
+            50% {
+                color: dodgerblue;
+            }
+
+            100% {
+                color: red;
+            }
+
         }
+
         #whoWins {
             animation: color-change .5s infinite;
         }
@@ -112,9 +144,9 @@
 <body>
     <audio id="lewya" src="https://www.myinstants.com/media/sounds/hallelujahshort.swf.mp3"></audio>
     <audio id="loser" src="https://www.myinstants.com/media/sounds/the-simpsons-nelsons-haha_Hr8OgOG.mp3"></audio>
-    <div class="jumbotron jumbotron-fluid text-center">
+    <div id="jumbo" class="jumbotron jumbotron-fluid text-center">
         <div class="container">
-            <div class="">
+            <div>
                 <h1>War? What Is It Good For?</h1>
                 <div id="play-field" class="jumbotron jumbotron-fluid text-center">
                     <div class="container">
@@ -123,14 +155,16 @@
                             <h1> Your Wins: <span id="yourWins"></span> </h1>
                             <h1> CPU Wins: <span id="cpuWins"></span> </h1>
                             <div id="compare"></div>
-                            <a id="draw" class=""><h2> Draw </h2></a>
+                            <button id="draw" class="">
+                                <h2> Draw </h2>
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div id="deck">
+                <div id="deck" class="jumbotron jumbotron-fluid">
 
                 </div>
-                <div id="deck2">
+                <div id="deck2" class="jumbotron jumbotron-fluid">
 
                 </div>
             </div>
@@ -153,7 +187,7 @@
 
         firebase.initializeApp(config);
         var db = firebase.database();
-        
+
         var deck = [];
         var deck2 = [];
         var suits = ["spades", "diamonds", "clubs", "hearts"];
@@ -161,7 +195,7 @@
         var compare = [];
         var yourWins = 0;
         var cpuWins = 0;
-        
+
         function getDeck() {
             var deck = [];
             for (var i = 0; i < suits.length; i++) {
@@ -170,10 +204,10 @@
                     deck.push(card);
                 }
             }
-            
+
             return deck;
         }
-        
+
         function getDeck2() {
             var deck2 = [];
             for (var i = 0; i < suits.length; i++) {
@@ -182,26 +216,30 @@
                     deck2.push(card);
                 }
             }
-            
+
             return deck2;
         }
-        
+
         function renderDeck() {
             document.getElementById("deck").innerHTML = "";
             for (var i = 0; i < deck.length; i++) {
                 var card = document.createElement("div");
                 var value = document.createElement("div");
                 var suit = document.createElement("div");
-                card.className = "card";
-                value.className = "value " + deck[i].Suit;
+                card.className = "card " + "jumbotron " + "jumbotron-fluid";
+                value.className = "value" + deck[i].Value + " " + deck[i].Suit;
                 suit.className = "suit " + deck[i].Suit;
                 value.innerHTML = deck[i].Value;
                 card.appendChild(value);
                 card.appendChild(suit);
                 document.getElementById("deck").appendChild(card);
+                $(".value11").text("J");
+                $(".value12").text("Q");
+                $(".value13").text("K");
+                $(".value14").text("A");
             }
         }
-        
+
         function renderDeck2() {
             document.getElementById("deck2").innerHTML = "";
             for (var i = 0; i < deck2.length; i++) {
@@ -209,17 +247,22 @@
                 var value = document.createElement("div");
                 var suit = document.createElement("div");
                 card.className = "card";
-                value.className = "value " + deck2[i].Suit;
+                value.className = "value" + deck2[i].Value + " " + deck2[i].Suit;
                 suit.className = "suit " + deck2[i].Suit;
                 value.innerHTML = deck2[i].Value;
                 card.appendChild(value);
                 card.appendChild(suit);
                 document.getElementById("deck2").appendChild(card);
+                $(".value11").text("J");
+                $(".value12").text("Q");
+                $(".value13").text("K");
+                $(".value14").text("A");
             }
         }
-        
+
         $("#draw").on("click", function () {
             $("#draw").hide(3000);
+            $("#draw").prop("disabled", true);
             var randomCard = deck[Math.floor(Math.random() * deck.length)];
             var randomCPUcard = deck2[Math.floor(Math.random() * deck2.length)];
             console.log(randomCard);
@@ -244,70 +287,84 @@
             console.log(cpuValue);
 
             if (cpuValue > cardValue) {
-                setTimeout(function() {
+                setTimeout(function () {
                     $("#whoWins").show();
-                    $("#whoWins").text("CPU Wins!!!");
-                    $('#whoWins').animate({ fontSize: '150px' }, 1000);
+                    $("#whoWins").text("You Lose!!!");
+                    $('#whoWins').animate({ fontSize: '90px' }, 1000);
                     $('#whoWins').animate({ fontSize: '0px' }, 1000);
-                    $("#draw").show(3000);    
+                    $("#draw").show(3000);
+                    $("#draw").prop("disabled", false);
                     $("#whoWins").fadeOut(1500);
                     $("#loser")[0].play();
                     cpuWins++;
                     $("#cpuWins").text(cpuWins);
-                    
-            },3000);
+
+                }, 3000);
                 deck2.push(randomCPUcard);
                 deck2.push(randomCard);
                 compare.splice(0, 2);
                 console.log(compare);
+                storeDecks();
                 renderDeck2();
-        }
-            
+            }
 
-           if (cpuValue < cardValue) {
-               setTimeout(function() {
-                   $("#whoWins").show();
-                   $("#whoWins").text("You Win!!!");
-                   $('#whoWins').animate({ fontSize: '150px' }, 1000);
-                   $('#whoWins').animate({ fontSize: '0px' }, 1000);
-                   $("#draw").show(3000);    
-                   $("#whoWins").fadeOut(1500);
-                   yourWins++;
-                   $("#yourWins").text(yourWins);
-                   $("#lewya")[0].play(5000);
-                   
-                },3000);
+            
+            if (cpuValue < cardValue) {
+                setTimeout(function () {
+                    $("#whoWins").show();
+                    $("#whoWins").text("You Win!!!");
+                    $('#whoWins').animate({ fontSize: '90px' }, 1000);
+                    $('#whoWins').animate({ fontSize: '0px' }, 1000);
+                    $("#draw").show(3000);
+                    $("#draw").prop("disabled", false);
+                    $("#whoWins").fadeOut(1500);
+                    yourWins++;
+                    $("#yourWins").text(yourWins);
+                    $("#lewya")[0].play(5000);
+
+                }, 3000);
                 deck.push(randomCPUcard);
                 deck.push(randomCard);
                 compare.splice(0, 2);
                 console.log(compare);
+                storeDecks();
                 renderDeck();
-        }    
-                
-               if (cpuValue === cardValue) {
-                setTimeout(function() {
+            }
+
+            if (cpuValue === cardValue) {
+                setTimeout(function () {
                     $("#whoWins").show(1500);
                     $("#whoWins").text("Stalemate!!!");
-                    $('#whoWins').animate({ fontSize: '150px' }, 1500);
+                    $('#whoWins').animate({ fontSize: '90px' }, 1500);
                     $('#whoWins').animate({ fontSize: '0px' }, 1500);
-                    $("#draw").show(3000);    
+                    $("#draw").show(3000);
+                    $("#draw").prop("disabled", false);
                     $("#whoWins").fadeOut(1500);
-                    
-                },3000);
+
+                }, 3000);
                 var graveYard = [];
                 graveYard.push(randomCard);
                 graveYard.push(randomCPUcard);
                 console.log(graveYard);
                 compare.splice(0, 2);
                 console.log(compare);
-                // compareHands();
                 renderDeck();
                 renderDeck2();
-            }
-            
-            db.ref("/deck").update({
-                deck
+                db.ref("/graveyard").update({
+                   graveyard
             })
+            }
+            // function storeDecks () {
+            // db.ref("/deck").update({
+            //     deck
+            // })
+            // db.ref("/deck2").update({
+            //     deck2
+            // })
+            // db.ref("/graveyard").update({
+            //     graveyard
+            // })
+            // }
         });
 
         function compareHands() {
@@ -317,15 +374,29 @@
                 var handValue = document.createElement("div");
                 var handSuit = document.createElement("div");
                 handCard.className = "card";
-                handValue.className = "value " + compare[i].Suit;
+                handValue.className = "value" + compare[i].Value + " " + compare[i].Suit;
                 handSuit.className = "suit " + compare[i].Suit;
                 handValue.innerHTML = compare[i].Value;
                 handCard.appendChild(handValue);
                 handCard.appendChild(handSuit);
                 document.getElementById("compare").appendChild(handCard);
+                $(".value11").text("J");
+                $(".value12").text("Q");
+                $(".value13").text("K");
+                $(".value14").text("A");
             }
         }
-        
+
+        function storeDecks () {
+            db.ref("/deck").update({
+                deck
+            })
+            db.ref("/deck2").update({
+                deck2
+            })
+            
+        }
+
         function load() {
             deck = getDeck();
             deck2 = getDeck2();
@@ -333,6 +404,7 @@
             renderDeck2();
             console.log(deck);
             console.log(deck2);
+            storeDecks();
             $("#whoWins").fadeOut();
         }
         window.onload = load;
@@ -341,4 +413,3 @@
 </body>
 
 </html>
-        
