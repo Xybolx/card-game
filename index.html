@@ -42,6 +42,8 @@
         .card {
             padding: 10px;
             border: solid 1px #808080;
+            /* background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSszjZE8_jG8mjSgoYWu9dQ0ncogLTgkHsgyZxi09xO8uYeMvQQ"); */
+            /* background-size: contain; */
             background-color: white;
             display: inline-block;
             border-radius: 10px;
@@ -50,6 +52,76 @@
             color: black;
             margin: 3px;
         }
+
+        /* .clubs9 {
+            background:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSszjZE8_jG8mjSgoYWu9dQ0ncogLTgkHsgyZxi09xO8uYeMvQQ');
+            background-size: contain;
+        }
+
+        .spades2 {
+            background:url('https://us.123rf.com/450wm/henningmarquardt/henningmarquardt1703/henningmarquardt170300245/74712934-grote-index-speelkaart-2-schoppen.jpg?ver=6');
+            background-size: contain;
+        }
+
+        .spades3 {
+            background: url('https://previews.123rf.com/images/henningmarquardt/henningmarquardt1703/henningmarquardt170300244/74712933-large-index-playing-card-3-of-spades.jpg');
+            background-size: contain;
+        }
+
+        .spades4 {
+            background: url('https://previews.123rf.com/images/henningmarquardt/henningmarquardt1703/henningmarquardt170300243/74712945-large-index-playing-card-4-of-spades.jpg');
+            background-size: contain;
+        }
+
+        .spades5 {
+            background: url('https://previews.123rf.com/images/henningmarquardt/henningmarquardt1703/henningmarquardt170300242/74712931-large-index-playing-card-5-of-spades.jpg');
+            background-size:contain;
+        }
+
+        .spades6 {
+            background: url('https://thumbs.dreamstime.com/z/large-index-playing-card-spades-large-index-playing-card-spades-american-deck-122572927.jpg');
+            background-size:cover;
+        }
+
+        .spades7 {
+            background: url('https://media.istockphoto.com/photos/large-index-playing-card-7-of-spades-picture-id657378324');
+            background-size:cover;
+        }
+
+        .spades8 {
+            background: url('https://upload.wikimedia.org/wikipedia/commons/e/e6/Poker-sm-217-8s.png');
+            background-size:cover;
+        }
+
+        .spades9 {
+            background: url('https://i.pinimg.com/originals/ec/10/e8/ec10e8ec3d917946e43d5944aade2ed5.png');
+            background-size:cover;
+        }
+
+        .spades10 {
+            background: url('http://www.destinycardreadings.com/wp-content/uploads/2018/08/10-of-spades.png');
+            background-size: cover;
+        }
+
+        .spades11 {
+            background: url('https://st4.depositphotos.com/18895738/20952/i/1600/depositphotos_209525348-stock-photo-large-index-playing-card-jack.jpg');
+            background-size:cover;
+        }
+
+        .spades12 {
+            background: url('https://previews.123rf.com/images/henningmarquardt/henningmarquardt1703/henningmarquardt170300235/74712923-large-index-playing-card-queen-of-spades.jpg');
+            background-size:cover;
+        }
+
+        .spades13 {
+            background: url('https://thumbs.dreamstime.com/z/large-index-playing-card-king-spades-american-deck-122573720.jpg');
+            background-size:cover;
+        }
+
+        .spades14 {
+            background: url('https://st4.depositphotos.com/18895738/20952/i/1600/depositphotos_209523840-stock-photo-large-index-playing-card-ace.jpg');
+            background-size:cover;
+        } */
 
 
         #draw {
@@ -66,35 +138,40 @@
         .card .suit {
             background-image: url('http://www.thatsoftwaredude.com/images/post/0f631eeb-6c4a-4bfd-9f86-e0a08ae8584b.png');
             height: 95px;
-            width: 85px;
+            width: 90px;
+            font-weight: lighter; 
         }
 
         .card .diamonds {
             background-position-y: 95px;
             color: red;
             font-size: 15pt;
-            font-weight: bold;
+            font-weight: lighter;
+            font-family: fantasy;
         }
 
         .card .hearts {
-            background-position-x: 88px;
+            background-position-x: 91px;
             color: red;
             font-size: 15pt;
-            font-weight: bold;
+            font-weight: lighter;
+            font-family: fantasy;
         }
 
         .card .clubs {
-            background-position-x: 89px;
+            background-position-x: 91px;
             background-position-y: 100px;
             color: black;
             font-size: 15pt;
-            font-weight: bold;
+            font-weight: lighter;
+            font-family: fantasy;
         }
 
         .card .spades {
             color: black;
             font-size: 15pt;
-            font-weight: bold;
+            font-weight: lighter;
+            font-family: fantasy;
         }
 
         #jumbo {
@@ -223,7 +300,7 @@
                 var card = document.createElement("div");
                 var value = document.createElement("div");
                 var suit = document.createElement("div");
-                card.className = "card " + "jumbotron " + "jumbotron-fluid";
+                card.className = "card " + deck[i].Suit + deck[i].Value + " " + "jumbotron " + "jumbotron-fluid";
                 value.className = "value" + deck[i].Value + " " + deck[i].Suit;
                 suit.className = "suit " + deck[i].Suit;
                 value.innerHTML = deck[i].Value;
@@ -244,7 +321,7 @@
                 var value = document.createElement("div");
                 var suit = document.createElement("div");
                 var value2 = document.createElement("div");
-                card.className = "card";
+                card.className = "card " + deck2[i].Suit + deck2[i].Value + " " + "jumbotron " + "jumbotron-fluid";
                 value.className = "value" + deck2[i].Value + " " + deck2[i].Suit;
                 suit.className = "suit " + deck2[i].Suit;
                 value.innerHTML = deck2[i].Value;
@@ -360,7 +437,7 @@
                 var handCard = document.createElement("div");
                 var handValue = document.createElement("div");
                 var handSuit = document.createElement("div");
-                handCard.className = "card";
+                handCard.className = "card " + deck[i].Suit + deck[i].Value + " " + "jumbotron " + "jumbotron-fluid";
                 handValue.className = "value" + compare[i].Value + " " + compare[i].Suit;
                 handSuit.className = "suit " + compare[i].Suit;
                 handValue.innerHTML = compare[i].Value;
