@@ -51,7 +51,7 @@
             margin: 3px;
         }
 
-        
+
         #draw {
             background: black;
             color: red;
@@ -98,7 +98,7 @@
         }
 
 
-        
+
 
         #jumbo {
             background: darkgreen;
@@ -116,7 +116,7 @@
         h1 {
             color: yellow;
             text-shadow: 2px 2px whitesmoke;
-            
+
         }
 
         @keyframes color-change {
@@ -308,7 +308,7 @@
                 renderDeck2();
             }
 
-            
+
             if (cpuValue < cardValue) {
                 setTimeout(function () {
                     $("#whoWins").show();
@@ -351,20 +351,9 @@
                 renderDeck();
                 renderDeck2();
                 db.ref("/graveyard").update({
-                   graveyard
-            })
+                    graveyard
+                })
             }
-            // function storeDecks () {
-            // db.ref("/deck").update({
-            //     deck
-            // })
-            // db.ref("/deck2").update({
-            //     deck2
-            // })
-            // db.ref("/graveyard").update({
-            //     graveyard
-            // })
-            // }
         });
 
         function compareHands() {
@@ -387,14 +376,14 @@
             }
         }
 
-        function storeDecks () {
+        function storeDecks() {
             db.ref("/deck").update({
                 deck
             })
             db.ref("/deck2").update({
                 deck2
             })
-            
+
         }
 
         function load() {
