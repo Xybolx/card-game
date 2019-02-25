@@ -502,6 +502,8 @@ h4 {
 
 #whoWins {
 	animation: color-change .25s infinite;
+	background: url("./fire.gif");
+	background-size: contain; 
 }
 
 #yourWins {
@@ -513,7 +515,7 @@ h4 {
 }
 
 #stalemates {
-	color: grey;
+	color: black;
 }
 
 #yourCards {
