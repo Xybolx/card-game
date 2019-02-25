@@ -458,7 +458,7 @@
 	outline-style: double;
 	outline-color: tomato;
 	outline-width: thick;
-	background: black;
+	background: repeating-linear-gradient(black, whitesmoke, forestgreen, black);
 }
 
 h1 {
@@ -530,14 +530,14 @@ h4 {
 }
 
 #yourDeck {
-	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), transparent;
+	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), black;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
 #cpuDeck {
-	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), transparent;
+	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), black;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
