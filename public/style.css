@@ -417,7 +417,7 @@
 
 #draw:hover {
 	color: yellow;
-	border: double white;
+	/* border: double white; */
 }
 
 .card .suit {
@@ -526,18 +526,18 @@ h4 {
 
 #yourDeck:hover {
 	color: yellow;
-	border: double white;
+	/* border: double white; */
 }
 
 #yourDeck {
-	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), black;
+	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), transparent;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
 #cpuDeck {
-	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), black;
+	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), transparent;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -545,12 +545,12 @@ h4 {
 
 #cpuDeck:hover {
 	color: yellow;
-	border: double white;
+	/* border: double white; */
 }
 
 .btn:hover {
 	color: yellow;
-	border: double white;
+	/* border: double white; */
 }
 
 #modalClose {
@@ -558,4 +558,9 @@ h4 {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+}
+
+.hand {
+	background: url("./War.jpg");
+	background-size: cover;
 }
