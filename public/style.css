@@ -26,10 +26,10 @@
 
 .card {
 	padding: 10px;
-	border: solid 1px #808080;
+	/* border: solid 1px #808080; */
 	background-color: white;
 	display: inline-block;
-	border-radius: 5px;
+	border-radius: 10px;
 	font-size: 10pt;
 	text-align: left;
 	color: black;
@@ -407,52 +407,50 @@
 	background-position: center;
 	color: white;
 	padding: 10px 20px;
-	border: solid whitesmoke;
-	/* border-radius: 100%; */
-	outline: thick double tomato;
+	/* border: solid whitesmoke; */
+	/* border-radius: 5px; */
+	/* outline: thick double tomato; */
 	margin: 10px;
 	display: inline-block;
 	cursor: pointer;
 }
 
+#draw:hover {
+	color: yellow;
+	border: double white;
+}
+
 .card .suit {
 	height: 110px;
-	width: 90px;
-	font-weight: lighter; 
+	width: 90px; 
 }
 
 .card .diamonds {
-	background-position-y: 95px;
 	color: transparent;
 	font-size: 15pt;
-	font-weight: lighter;
-	font-family: cursive;
 }
 
 .card .hearts {
-	background-position-x: 91px;
 	color: transparent;
 	font-size: 15pt;
-	font-weight: lighter;
-	font-family: cursive;
 }
 
 .card .clubs {
 	color: transparent;
 	font-size: 15pt;
-	font-weight: lighter;
-	font-family: cursive;
 }
 
 .card .spades {
 	color: transparent;
 	font-size: 15pt;
-	font-weight: lighter;
-	font-family: cursive;
 }
 
 #jumbo {
 	background: darkgreen;
+}
+
+#jumbo2 {
+	background: transparent;
 }
 
 #play-field {
@@ -467,6 +465,16 @@ h1 {
 	color: yellow;
 	text-shadow: 1px 1px whitesmoke;
 
+}
+
+h2 {
+	color: yellow;
+	text-shadow: 1px 1px whitesmoke;
+}
+
+h4 {
+	color: yellow;
+	text-shadow: 1px 1px whitesmoke;
 }
 
 @keyframes color-change {
@@ -514,4 +522,40 @@ h1 {
 
 #cpuCards {
 	color: red;
+}
+
+#yourDeck:hover {
+	color: yellow;
+	border: double white;
+}
+
+#yourDeck {
+	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), black;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#cpuDeck {
+	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), black;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#cpuDeck:hover {
+	color: yellow;
+	border: double white;
+}
+
+.btn:hover {
+	color: yellow;
+	border: double white;
+}
+
+#modalClose {
+	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), black;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 }

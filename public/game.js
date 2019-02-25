@@ -52,6 +52,8 @@ var deck = [];
                 $(".value13").text("K");
                 $(".value14").text("A");
             }
+            var modalClose = $("<div><h1>Your Deck</h1><button id='modalClose' type='button' class='btn btn-danger' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span>Close</div>");
+            $("#deck").prepend(modalClose);
         }
 
         function renderDeck2() {
@@ -60,7 +62,6 @@ var deck = [];
                 var card = document.createElement("div");
                 var value = document.createElement("div");
                 var suit = document.createElement("div");
-                var value2 = document.createElement("div");
                 card.className = "card " + deck2[i].Suit + deck2[i].Value + " " + "jumbotron " + "jumbotron-fluid";
                 value.className = "value" + deck2[i].Value + " " + deck2[i].Suit;
                 suit.className = "suit " + deck2[i].Suit;
@@ -73,11 +74,14 @@ var deck = [];
                 $(".value13").text("K");
                 $(".value14").text("A");
             }
+            var modalClose = $("<div><h1>CPU Deck</h1><button id='modalClose' type='button' class='btn btn-danger' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span>Close</div>");
+            $("#deck2").prepend(modalClose);
         }
 
         $("#draw").on("click", function () {
+            $("#compare").show(1500);
             $("#draw").hide(3000);
-            $("#draw").prop("disabled", true);
+            $("#draw").prop("disabled", true, 5000);
             var firstCard = deck[0];
             var firstCPUcard = deck2[0];
             console.log(firstCard);
@@ -103,12 +107,12 @@ var deck = [];
 
             if (cpuValue > cardValue) {
                 setTimeout(function () {
+                    $("#compare").hide(3000);
                     $("#whoWins").show();
-                    $("#whoWins").text("You Lose!!!");
-                    $('#whoWins').animate({ fontSize: '70px' }, 1000);
+                    $("#whoWins").text("You Lose!");
+                    $('#whoWins').animate({ fontSize: '60px' }, 1000);
                     $('#whoWins').animate({ fontSize: '0px' }, 1000);
                     $("#draw").show(3000);
-                    $("#draw").prop("disabled", false);
                     $("#whoWins").fadeOut(1500);
                     $("#loser")[0].play();
                     cpuWins++;
@@ -117,6 +121,7 @@ var deck = [];
                     $("#cpuWins").text(cpuWins);
                     $("#cpuCards").text(cpuCards);
                     $("#yourCards").text(yourCards);
+                    $("#draw").prop("disabled", false);
 
                 }, 3000);
                 deck2.push(firstCPUcard);
@@ -129,12 +134,12 @@ var deck = [];
 
             if (cpuValue < cardValue) {
                 setTimeout(function () {
+                    $("#compare").hide(3000);
                     $("#whoWins").show();
-                    $("#whoWins").text("You Win!!!");
+                    $("#whoWins").text("You Win!");
                     $('#whoWins').animate({ fontSize: '70px' }, 1000);
                     $('#whoWins').animate({ fontSize: '0px' }, 1000);
                     $("#draw").show(3000);
-                    $("#draw").prop("disabled", false);
                     $("#whoWins").fadeOut(1500);
                     yourWins++;
                     yourCards++;
@@ -143,6 +148,7 @@ var deck = [];
                     $("#cpuCards").text(cpuCards);
                     $("#yourCards").text(yourCards);
                     $("#lewya")[0].play(5000);
+                    $("#draw").prop("disabled", false);
 
                 }, 3000);
                 deck.push(firstCPUcard);
@@ -154,6 +160,7 @@ var deck = [];
 
             if (cpuValue === cardValue) {
                 setTimeout(function () {
+                    $("#compare").hide(3000);
                     $("#whoWins").show();
                     $("#whoWins").text("Stalemate!");
                     $('#whoWins').animate({ fontSize: '60px' }, 1000);
@@ -236,8 +243,8 @@ function shuffleDeck2() {
             deck2 = getDeck2();
             shuffleDeck();
             shuffleDeck2();
-            renderDeck();
-            renderDeck2();
+            // renderDeck();
+            // renderDeck2();
             console.log(deck);
             console.log(deck2);
             $("#yourCards").text(yourCards);
@@ -245,6 +252,5 @@ function shuffleDeck2() {
             $("#yourWins").text(yourWins);
             $("#cpuWins").text(cpuWins);
             $("#stalemates").text(stalemates);
-            // $("#whoWins").fadeOut();
         }
         window.onload = load;

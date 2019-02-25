@@ -20,27 +20,38 @@
     <div id="jumbo" class="jumbotron jumbotron-fluid text-center">
         <div class="container">
             <div>
-                <h1>War? What Is It Good For?</h1>
+                <h2>War? What Is It Good For?</h2>
                 <div id="play-field" class="jumbotron jumbotron-fluid text-center">
                     <div class="container">
                         <div class="hand">
-                            <h1><span id="whoWins"></span></h1>
-                            <h1> Your Wins: <span id="yourWins"></span> </h1>
-                            <h1> CPU Wins: <span id="cpuWins"></span> </h1>
-                            <h1> Stalemates: <span id="stalemates"></span> </h1>
-                            <div id="compare"></div>
-                            <button id="draw" class="">
-                                <h2> Draw </h2>
-                            </button>
-                            <h1> Your Cards: <span id="yourCards"></span> </h1>
-                            <h1> CPU Cards: <span id="cpuCards"></span> </h1>
+                            <h2> Your Wins: <span id="yourWins"></span> </h2>
+                            <h2> CPU Wins: <span id="cpuWins"></span> </h2>
+                            <h2> Stalemates: <span id="stalemates"></span> </h2>
+                            <div id="jumbo2" class="user-alert jumbotron jumbotron-fluid"><h1><span id="whoWins"></span></h1>
+                            <div class="" id="compare">
+                                
+                            </div>
+                            <button id="draw" class="btn btn-danger"><img class="img-fluid" src="black_joker.png" style="max-height: 50px">
+                                <h3> Draw </h3>
+                                    </button>
+                            </div>
+                            <h4> Your Cards: <span id="yourCards"></span> </h4>
+                            <h4> CPU Cards: <span id="cpuCards"></span> </h4>
                         </div>
                     </div>
+                    <button id="yourDeck" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deck"><img class="img-fluid" src="red_joker.png" style="max-height: 50px">
+                        Your Deck
+                      </button>
+                      <button id="cpuDeck" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deck2"><img class="img-fluid" src="red_joker.png" style="max-height: 50px">
+                        CPU Deck
+                      </button>
+                      
+                      
                 </div>
-                <div id="deck" class="jumbotron jumbotron-fluid">
+                <div id="deck" class="modal jumbotron jumbotron-fluid" aria-hidden="true">
                     
                 </div>
-                <div id="deck2" class="jumbotron jumbotron-fluid">
+                <div id="deck2" class="modal jumbotron jumbotron-fluid" aria-hidden="true">
                     
                 </div>
             </div>
