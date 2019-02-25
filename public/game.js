@@ -79,7 +79,8 @@ var deck = [];
         }
 
         $("#draw").on("click", function () {
-            $("#compare").show(1500);
+            $("#deal")[0].play();
+            $("#compare").show(1000);
             $("#draw").hide(3000);
             $("#draw").prop("disabled", true, 5000);
             var firstCard = deck[0];
