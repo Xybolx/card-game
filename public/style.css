@@ -1,0 +1,517 @@
+#deck {
+	width: 100%;
+	margin: 20px auto;
+	background: black;
+	border: solid 10px whitesmoke;
+	outline-style: double;
+	outline-color: tomato;
+	outline-width: thick;
+	padding: 10px;
+	text-align: center;
+	color: white;
+}
+
+#deck2 {
+	width: 100%;
+	margin: 20px auto;
+	background: black;
+	border: solid 10px whitesmoke;
+	outline-style: double;
+	outline-color: tomato;
+	outline-width: thick;
+	padding: 10px;
+	text-align: center;
+	color: white;
+}
+
+.card {
+	padding: 10px;
+	border: solid 1px #808080;
+	background-color: white;
+	display: inline-block;
+	border-radius: 5px;
+	font-size: 10pt;
+	text-align: left;
+	color: black;
+	margin: 3px;
+}
+
+.clubs2 {
+	background: url("./2_of_clubs.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.clubs3 {
+	background: url("./3_of_clubs.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.clubs4 {
+	background: url("./4_of_clubs.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.clubs5 {
+	background: url("./5_of_clubs.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.clubs6 {
+	background: url("./6_of_clubs.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.clubs7 {
+	background: url("./7_of_clubs.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.clubs8 {
+	background: url("./8_of_clubs.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.clubs9 {
+	background: url("./9_of_clubs.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.clubs10 {
+	background: url("./10_of_clubs.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.clubs11 {
+	background: url("./jack_of_clubs2.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.clubs12 {
+	background: url("./queen_of_clubs2.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.clubs13 {
+	background: url("./king_of_clubs2.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.clubs14 {
+	background: url("./ace_of_clubs.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.spades2 {
+	background: url("./2_of_spades.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.spades3 {
+	background: url("./3_of_spades.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.spades4 {
+	background: url("./4_of_spades.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.spades5 {
+	background: url("./5_of_spades.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.spades6 {
+	background: url("./6_of_spades.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.spades7 {
+	background: url("./7_of_spades.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.spades8 {
+	background: url("./8_of_spades.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.spades9 {
+	background: url("./9_of_spades.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.spades10 {
+	background: url("./10_of_spades.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.spades11 {
+	background: url("./jack_of_spades2.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.spades12 {
+	background: url("./queen_of_spades2.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.spades13 {
+	background: url("./king_of_spades2.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.spades14 {
+	background: url("./ace_of_spades.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.diamonds2 {
+	background: url("./2_of_diamonds.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.diamonds3 {
+	background: url("./3_of_diamonds.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.diamonds4 {
+	background: url("./4_of_diamonds.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.diamonds5 {
+	background: url("./5_of_diamonds.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.diamonds6 {
+	background: url("./6_of_diamonds.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.diamonds7 {
+	background: url("./7_of_diamonds.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.diamonds8 {
+	background: url("./8_of_diamonds.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.diamonds9 {
+	background: url("./9_of_diamonds.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.diamonds10 {
+	background: url("./10_of_diamonds.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.diamonds11 {
+	background: url("./jack_of_diamonds2.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.diamonds12 {
+	background: url("./queen_of_diamonds2.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.diamonds13 {
+	background: url("./king_of_diamonds2.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.diamonds14 {
+	background: url("./ace_of_diamonds.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hearts2 {
+	background: url("./2_of_hearts.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hearts3 {
+	background: url("./3_of_hearts.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hearts4 {
+	background: url("./4_of_hearts.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hearts5 {
+	background: url("./5_of_hearts.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hearts6 {
+	background: url("./6_of_hearts.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hearts7 {
+	background: url("./7_of_hearts.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hearts8 {
+	background: url("./8_of_hearts.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hearts9 {
+	background: url("./9_of_hearts.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hearts10 {
+	background: url("./10_of_hearts.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hearts11 {
+	background: url("./jack_of_hearts2.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hearts12 {
+	background: url("./queen_of_hearts2.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hearts13 {
+	background: url("./king_of_hearts2.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hearts14 {
+	background: url("./ace_of_hearts.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+#draw {
+	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), black;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	color: white;
+	padding: 10px 20px;
+	border: solid whitesmoke;
+	/* border-radius: 100%; */
+	outline: thick double tomato;
+	margin: 10px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.card .suit {
+	height: 110px;
+	width: 90px;
+	font-weight: lighter; 
+}
+
+.card .diamonds {
+	background-position-y: 95px;
+	color: transparent;
+	font-size: 15pt;
+	font-weight: lighter;
+	font-family: cursive;
+}
+
+.card .hearts {
+	background-position-x: 91px;
+	color: transparent;
+	font-size: 15pt;
+	font-weight: lighter;
+	font-family: cursive;
+}
+
+.card .clubs {
+	color: transparent;
+	font-size: 15pt;
+	font-weight: lighter;
+	font-family: cursive;
+}
+
+.card .spades {
+	color: transparent;
+	font-size: 15pt;
+	font-weight: lighter;
+	font-family: cursive;
+}
+
+#jumbo {
+	background: darkgreen;
+}
+
+#play-field {
+	border: solid 10px whitesmoke;
+	outline-style: double;
+	outline-color: tomato;
+	outline-width: thick;
+	background: black;
+}
+
+h1 {
+	color: yellow;
+	text-shadow: 1px 1px whitesmoke;
+
+}
+
+@keyframes color-change {
+	0% {
+		color: dodgerblue;
+	}
+
+	25% {
+		color: red;
+	}
+
+	50% {
+		color: dodgerblue;
+	}
+
+	75% {
+		color: red;
+	}
+
+	100% {
+		color: dodgerblue;
+	}
+
+}
+
+#whoWins {
+	animation: color-change .25s infinite;
+}
+
+#yourWins {
+	color: dodgerblue;
+}
+
+#cpuWins {
+	color: red;
+}
+
+#stalemates {
+	color: grey;
+}
+
+#yourCards {
+	color: dodgerblue;
+}
+
+#cpuCards {
+	color: red;
+}

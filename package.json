@@ -1,0 +1,30 @@
+{
+  "name": "card-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "card-deck": "^1.0.0",
+    "card_deck": "^1.0.7",
+    "chokidar": "^2.1.1",
+    "child_process": "^1.0.2",
+    "deck-of-cards": "^0.1.8",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xybolx/card-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Xybolx/card-game/issues"
+  },
+  "homepage": "https://github.com/Xybolx/card-game#readme"
+}
