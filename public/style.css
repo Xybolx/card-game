@@ -1,7 +1,7 @@
 #deck {
 	width: 100%;
 	margin: 20px auto;
-	background: black;
+	background: darkgreen;
 	border: solid 10px whitesmoke;
 	outline-style: double;
 	outline-color: tomato;
@@ -14,7 +14,7 @@
 #deck2 {
 	width: 100%;
 	margin: 20px auto;
-	background: black;
+	background: darkgreen;
 	border: solid 10px whitesmoke;
 	outline-style: double;
 	outline-color: tomato;
@@ -401,13 +401,13 @@
 }
 
 #draw {
-	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), black;
+	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), transparent;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
 	color: white;
 	padding: 10px 20px;
-	/* border: solid whitesmoke; */
+	border: solid transparent;
 	/* border-radius: 5px; */
 	/* outline: thick double tomato; */
 	margin: 10px;
@@ -458,7 +458,11 @@
 	outline-style: double;
 	outline-color: tomato;
 	outline-width: thick;
-	background: repeating-linear-gradient(black, whitesmoke, forestgreen, black);
+	background: rgb(8, 5, 0);
+	/* background: url("./table.png");
+	background-size: contain;
+	background-repeat: no-repeat; 
+	background-position: center; */
 }
 
 h1 {
@@ -532,17 +536,20 @@ h4 {
 }
 
 #yourDeck {
-	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), black;
+	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), transparent;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+	border: solid transparent;
+	
 }
 
 #cpuDeck {
-	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), black;
+	background: url("http://theredhandfiles.com/wp-content/uploads/2018/08/favicon.png"), transparent;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+	border: solid transparent;
 }
 
 #cpuDeck:hover {
@@ -563,6 +570,12 @@ h4 {
 }
 
 .hand {
+	background: url("./table.png");
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+#jumbo {
 	background: url("./War.jpg");
-	background-size: cover;
 }
