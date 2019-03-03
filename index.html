@@ -1,68 +1,71 @@
 <!DOCTYPE html>
 <html>
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>WAR</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="style.css">
-        <script src="https://code.jquery.com/jquery.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        
-        
-    </head>
-    
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAR</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+</head>
+
 <body>
     <audio id="lewya" src="https://www.myinstants.com/media/sounds/hallelujahshort.swf.mp3"></audio>
     <audio id="loser" src="https://www.myinstants.com/media/sounds/the-simpsons-nelsons-haha_Hr8OgOG.mp3"></audio>
-    <audio id="deal" src="https://www.myinstants.com/media/sounds/free-sound-fx-fires-fireball-whoosh-pass-by-heavy-with-crackle.mp3"></audio>
+    <audio id="deal"
+        src="https://www.myinstants.com/media/sounds/free-sound-fx-fires-fireball-whoosh-pass-by-heavy-with-crackle.mp3"></audio>
 
     <div id="jumbo" class="jumbotron jumbotron-fluid text-center">
         <div class="container">
             <div>
                 <div id="play-field" class="jumbotron jumbotron-fluid text-center">
-                        <h2>War? What Is It Good For?</h2>
+                    <h1>War?<br>What Is It Good For?</h1>
                     <div class="container">
-                        <div class="" id="war">
-                            
-                        </div>
                         <div class="hand">
-                            <h2> Your Wins: <span id="yourWins"></span> </h2>
-                            <h2> CPU Wins: <span id="cpuWins"></span> </h2>
-                            <h2> Stalemates: <span id="stalemates"></span> </h2>
-                            <div id="jumbo2" class="user-alert jumbotron jumbotron-fluid"><h1><span id="whoWins"></span></h1>
+                            <h4> Your Wins: <span id="yourWins"></span> </h4>
+                            <h4> CPU Wins: <span id="cpuWins"></span> </h4>
+                            <h4> Stalemates: <span id="stalemates"></span> </h4>
+                            <button id="yourDeck" type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#deck"><img class="img-fluid" src="card-hand.png" style="max-height: 30px">
+                                <h6> View Deck: <span id="yourCards"></span> </h6>
+                            </button>
+                            <button id="cpuDeck" type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#deck2"><img class="img-fluid" src="card-hand.png"
+                                    style="max-height: 30px">
+                                <h6> View Deck: <span id="cpuCards"></span> </h6>
+                            </button>
+                            <h1><span id="whoWins"></span></h1>
                             <div class="" id="compare">
                                 
                             </div>
-                            <button id="draw" class="btn btn-danger"><img class="img-fluid" src="card-hand.png" style="max-height: 50px">
-                                <h3> Draw </h3>
-                                    </button>
+                            <div id="jumbo2" class="container">
+                                <button id="draw" class="btn btn-danger"><img class="img-fluid" src="card-hand.png"
+                                    style="max-height: 30px">
+                                    <h4> Draw Cards </h4>
+                                </button>
                             </div>
-                            <!-- <h4> Your Cards: <span id="yourCards"></span> </h4> -->
-                            <!-- <h4> CPU Cards: <span id="cpuCards"></span> </h4> -->
                         </div>
+                        <!-- <h4> Your Cards: <span id="yourCards"></span> </h4> -->
+                        <!-- <h4> CPU Cards: <span id="cpuCards"></span> </h4> -->
                     </div>
-                    <button id="yourDeck" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deck"><img class="img-fluid" src="card-hand.png" style="max-height: 50px">
-                        <h4> Your Cards: <span id="yourCards"></span> </h4>
-                      </button>
-                      <button id="cpuDeck" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deck2"><img class="img-fluid" src="card-hand.png" style="max-height: 50px">
-                        <h4> CPU Cards: <span id="cpuCards"></span> </h4>
-                      </button>
-                      
-                      
+
+
                 </div>
                 <div id="deck" class="modal jumbotron jumbotron-fluid" aria-hidden="true">
-                    
+
                 </div>
                 <div id="deck2" class="modal jumbotron jumbotron-fluid" aria-hidden="true">
-                    
+
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script src="game.js"></script>
 </body>
 

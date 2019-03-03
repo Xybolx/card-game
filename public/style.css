@@ -410,7 +410,7 @@
 	border: solid transparent;
 	/* border-radius: 5px; */
 	/* outline: thick double tomato; */
-	margin: 10px;
+	/* margin: 10px; */
 	display: inline-block;
 	cursor: pointer;
 }
@@ -458,17 +458,22 @@
 	outline-style: double;
 	outline-color: tomato;
 	outline-width: thick;
-	background: rgb(8, 5, 0);
+	background: rgba(8, 5, 0, 0.863);
 	/* background: url("./table.png");
 	background-size: contain;
 	background-repeat: no-repeat; 
 	background-position: center; */
+	background: url("./table.png"), rgba(0, 0, 0, 0.815);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
 }
+
 
 h1 {
 	color: yellow;
 	text-shadow: 1px 1px whitesmoke;
-
+	padding-bottom: 50px;
 }
 
 h2 {
@@ -477,6 +482,11 @@ h2 {
 }
 
 h4 {
+	color: yellow;
+	text-shadow: 1px 1px whitesmoke;
+}
+
+h5, h6 {
 	color: yellow;
 	text-shadow: 1px 1px whitesmoke;
 }
@@ -552,11 +562,6 @@ h4 {
 	border: solid transparent;
 }
 
-#cpuDeck:hover {
-	color: yellow;
-	/* border: double white; */
-}
-
 .btn:hover {
 	color: yellow;
 	/* border: double white; */
@@ -569,12 +574,12 @@ h4 {
 	background-position: center;
 }
 
-.hand {
+/* .hand {
 	background: url("./table.png");
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
-}
+} */
 
 #jumbo {
 	background: url("./War.jpg");
