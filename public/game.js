@@ -1,4 +1,7 @@
-var deck = [];
+        
+    $(document).ready(function () {
+        
+        var deck = [];
         var deck2 = [];
         var suits = ["spades", "diamonds", "clubs", "hearts"];
         var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"];
@@ -42,7 +45,7 @@ var deck = [];
                 var suit = document.createElement("div");
                 card.className = "card " + deck[i].Suit + deck[i].Value + " " + "jumbotron " + "jumbotron-fluid";
                 value.className = "value" + deck[i].Value + " " + deck[i].Suit;
-                suit.className = "suit " + deck[i].Suit;
+                suit.className = "suit " + deck[i].Suit  + " " + "player" ;
                 value.innerHTML = deck[i].Value;
                 card.appendChild(value);
                 card.appendChild(suit);
@@ -255,3 +258,5 @@ function shuffleDeck2() {
             $("#stalemates").text(stalemates);
         }
         window.onload = load;
+
+    });
