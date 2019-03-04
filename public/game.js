@@ -115,7 +115,6 @@
                     $("#whoWins").show();
                     $("#whoWins").text("You Lose!");
                     $('#whoWins').animate({ fontSize: '60px' }, 1000);
-                    $('#whoWins').animate({ fontSize: '0px' }, 1000);
                     $("#draw").show(3000);
                     $("#whoWins").fadeOut(1500);
                     $("#loser")[0].play();
@@ -126,8 +125,9 @@
                     $("#cpuCards").text(cpuCards);
                     $("#yourCards").text(yourCards);
                     $("#draw").prop("disabled", false);
-
+                    
                 }, 3000);
+                $('#whoWins').animate({ fontSize: '0px' }, 1000);
                 deck2.push(firstCPUcard);
                 deck2.push(firstCard);
                 compare.splice(0, 2);
@@ -142,7 +142,6 @@
                     $("#whoWins").show();
                     $("#whoWins").text("You Win!");
                     $('#whoWins').animate({ fontSize: '60px' }, 1000);
-                    $('#whoWins').animate({ fontSize: '0px' }, 1000);
                     $("#draw").show(3000);
                     $("#whoWins").fadeOut(1500);
                     yourWins++;
@@ -153,8 +152,9 @@
                     $("#yourCards").text(yourCards);
                     $("#lewya")[0].play(5000);
                     $("#draw").prop("disabled", false);
-
+                    
                 }, 3000);
+                $('#whoWins').animate({ fontSize: '0px' }, 1000);
                 deck.push(firstCPUcard);
                 deck.push(firstCard);
                 compare.splice(0, 2);
@@ -168,7 +168,6 @@
                     $("#whoWins").show();
                     $("#whoWins").text("Stalemate!");
                     $('#whoWins').animate({ fontSize: '60px' }, 1000);
-                    $('#whoWins').animate({ fontSize: '0px' }, 1000);
                     $("#draw").show(3000);
                     $("#draw").prop("disabled", false);
                     $("#whoWins").fadeOut(1500);
@@ -178,9 +177,10 @@
                     $("#cpuCards").text(cpuCards);
                     $("#yourCards").text(yourCards);
                     $("#stalemates").text(stalemates);
-
-
+                    
+                    
                 }, 3000);
+                $('#whoWins').animate({ fontSize: '0px' }, 1000);
                 var graveYard = [];
                 graveYard.push(firstCard);
                 graveYard.push(firstCPUcard);
