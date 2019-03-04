@@ -26,11 +26,13 @@
                 <div id="play-field" class="jumbotron text-center">
                     <h1> War!<br>What Is It Good For?</h1>
                     <div class="container">
-                            <h2><span id="whoWins"></span></h2>
+                        <h2><span id="whoWins"></span></h2>
                         <div class="hand">
-                            <h5> Your Wins: <span id="yourWins"></span> </h5>
-                            <h5> CPU Wins: <span id="cpuWins"></span> </h5>
-                            <h5> Stalemates: <span id="stalemates"></span> </h5>
+                            <div id="stats" class="container">
+                                <h5> Your Wins: <span id="yourWins"></span> </h5>
+                                <h5> CPU Wins: <span id="cpuWins"></span> </h5>
+                                <h5> Stalemates: <span id="stalemates"></span> </h5>
+                            </div>
                             <button id="yourDeck" type="button" class="btn btn-danger" data-toggle="modal"
                                 data-target="#deck"><img class="img-fluid" src="card-hand.png" style="max-height: 30px">
                                 <h6> View Deck: <span id="yourCards"></span> </h6>
@@ -58,10 +60,12 @@
 
 
                 </div>
-                <div id="deck" class="modal jumbotron jumbotron-fluid" aria-hidden="true" style="max-height: 500px; max-width:100%">
+                <div id="deck" class="modal jumbotron jumbotron-fluid" aria-hidden="true"
+                    style="max-height: 500px; max-width:100%">
 
                 </div>
-                <div id="deck2" class="modal jumbotron jumbotron-fluid" aria-hidden="true" style="max-height: 500px; max-width:100%">
+                <div id="deck2" class="modal jumbotron jumbotron-fluid" aria-hidden="true"
+                    style="max-height: 500px; max-width:100%">
 
                 </div>
             </div>

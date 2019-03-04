@@ -84,7 +84,10 @@
         $("#draw").on("click", function () {
             $("#deal")[0].play();
             $("#compare").show(1000);
-            $("#draw").hide(3000);
+            $("#draw").hide();
+            $("#cpuDeck").hide();
+            $("#yourDeck").hide();
+            $("#stats").hide();
             $("#draw").prop("disabled", true, 5000);
             var firstCard = deck[0];
             var firstCPUcard = deck2[0];
@@ -112,10 +115,13 @@
             if (cpuValue > cardValue) {
                 setTimeout(function () {
                     $("#compare").hide(3000);
-                    $("#whoWins").show();
-                    $("#whoWins").text("You Lose!");
-                    $('#whoWins').animate({ fontSize: '60px' }, 1000);
+                    $("#whoWins").fadeIn(500);
+                    $("#whoWins").text("Loser!");
+                    $('#whoWins').animate({ fontSize: '70px' }, 1000);
                     $("#draw").show(3000);
+                    $("#stats").show(4000);
+                    $("#cpuDeck").show(2000);
+                    $("#yourDeck").show(2000);
                     $("#whoWins").fadeOut(1500);
                     $("#loser")[0].play();
                     cpuWins++;
@@ -139,10 +145,13 @@
             if (cpuValue < cardValue) {
                 setTimeout(function () {
                     $("#compare").hide(3000);
-                    $("#whoWins").show();
-                    $("#whoWins").text("You Win!");
-                    $('#whoWins').animate({ fontSize: '60px' }, 1000);
+                    $("#whoWins").fadeIn(500);
+                    $("#whoWins").text("Winner!");
+                    $('#whoWins').animate({ fontSize: '70px' }, 1000);
                     $("#draw").show(3000);
+                    $("#stats").show(4000);
+                    $("#cpuDeck").show(2000);
+                    $("#yourDeck").show(2000);
                     $("#whoWins").fadeOut(1500);
                     yourWins++;
                     yourCards++;
@@ -165,11 +174,13 @@
             if (cpuValue === cardValue) {
                 setTimeout(function () {
                     $("#compare").hide(3000);
-                    $("#whoWins").show();
+                    $("#whoWins").fadeIn(500);
                     $("#whoWins").text("Stalemate!");
                     $('#whoWins').animate({ fontSize: '60px' }, 1000);
                     $("#draw").show(3000);
-                    $("#draw").prop("disabled", false);
+                    $("#stats").show(4000);
+                    $("#cpuDeck").show(2000);
+                    $("#yourDeck").show(2000);
                     $("#whoWins").fadeOut(1500);
                     stalemates++;
                     yourCards--;
@@ -177,6 +188,7 @@
                     $("#cpuCards").text(cpuCards);
                     $("#yourCards").text(yourCards);
                     $("#stalemates").text(stalemates);
+                    $("#draw").prop("disabled", false);
                     
                     
                 }, 3000);

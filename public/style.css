@@ -407,11 +407,7 @@
 	background-position: center;
 	color: white;
 	padding: 10px 20px;
-	/* border: solid transparent; */
-	/* border-radius: 5px; */
-	/* outline: thick double tomato; */
-	/* margin: 10px; */
-	display: inline;
+	display: inline-block;
 	cursor: pointer;
 }
 
@@ -575,7 +571,7 @@ h5, h6 {
 	background: url("./fire.gif"), url("./card-hand.png");
 	background-blend-mode: screen;
 	background-size: contain;
-	background-repeat:repeat-y, no-repeat;
+	background-repeat: no-repeat;
 	background-position: center;
 	/* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
 }
@@ -600,17 +596,13 @@ h5, h6 {
 	color: red;
 }
 
-#yourDeck:hover {
-	color: yellow;
-	/* border: double white; */
-}
-
 #yourDeck {
 	background: black;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
-	/* border: solid transparent; */
+	display: inline-block;
+	margin-bottom: 5px;
 	
 }
 
@@ -619,12 +611,12 @@ h5, h6 {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
-	/* border: solid transparent; */
+	display: inline-block;
+	margin-bottom: 5px;
 }
 
 .btn:hover {
-	color: yellow;
-	/* border: double white; */
+	outline: double white;
 }
 
 #modalClose {
