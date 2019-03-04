@@ -45,7 +45,7 @@
                 var suit = document.createElement("div");
                 card.className = "card " + deck[i].Suit + deck[i].Value + " " + "jumbotron " + "jumbotron-fluid";
                 value.className = "value" + deck[i].Value + " " + deck[i].Suit;
-                suit.className = "suit " + deck[i].Suit  + " " + "player" ;
+                suit.className = "suit " + deck[i].Suit;
                 value.innerHTML = deck[i].Value;
                 card.appendChild(value);
                 card.appendChild(suit);
@@ -55,7 +55,7 @@
                 $(".value13").text("K");
                 $(".value14").text("A");
             }
-            var modalClose = $("<div><h1>Your Deck</h1><button id='modalClose' type='button' class='btn btn-danger' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span>Close</div>");
+            var modalClose = $("<div><h1>Your Deck</h1><button id='modalClose' type='button' class='btn btn-danger' data-dismiss='modal' aria-label='Close'><img src='card-hand.png' style='max-height: 30px'><span aria-hidden='true'>&times;</span>Close</div>");
             $("#deck").prepend(modalClose);
         }
 
@@ -77,7 +77,7 @@
                 $(".value13").text("K");
                 $(".value14").text("A");
             }
-            var modalClose = $("<div><h1>CPU Deck</h1><button id='modalClose' type='button' class='btn btn-danger' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span>Close</div>");
+            var modalClose = $("<div><h1>CPU Deck</h1><button id='modalClose' type='button' class='btn btn-danger' data-dismiss='modal' aria-label='Close'><img src='card-hand.png' style='max-height: 30px'><span aria-hidden='true'>&times;</span>Close</div>");
             $("#deck2").prepend(modalClose);
         }
 
@@ -141,7 +141,7 @@
                     $("#compare").hide(3000);
                     $("#whoWins").show();
                     $("#whoWins").text("You Win!");
-                    $('#whoWins').animate({ fontSize: '70px' }, 1000);
+                    $('#whoWins').animate({ fontSize: '60px' }, 1000);
                     $('#whoWins').animate({ fontSize: '0px' }, 1000);
                     $("#draw").show(3000);
                     $("#whoWins").fadeOut(1500);

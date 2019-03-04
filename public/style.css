@@ -401,13 +401,13 @@
 }
 
 #draw {
-	background: url("./hand.png"), transparent;
+	background: black;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
 	color: white;
 	padding: 10px 20px;
-	border: solid transparent;
+	/* border: solid transparent; */
 	/* border-radius: 5px; */
 	/* outline: thick double tomato; */
 	/* margin: 10px; */
@@ -423,11 +423,6 @@
 .card .suit {
 	height: 100px;
 	width: 85px; 
-}
-
-.card .suit .player {
-	height: 30px;
-	width: 20px; 
 }
 
 .card .diamonds {
@@ -480,7 +475,7 @@ h1 {
 	text-shadow: 1px 1px 10px white;
 	padding-bottom: 20px;
 	animation: color-change2 4s infinite;
-	/* background: rgba(0, 0, 0, 0.63); */
+	background: rgba(0, 0, 0, 0.63);
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -529,25 +524,24 @@ h5, h6 {
 @keyframes color-change2 {
 	25% {
 		text-shadow: 20px 20px 20px transparent;
-		outline: double white;
 		text-decoration-line: line-through; 
 	}
-
+	
 	50% {
 		text-shadow: 20px 20px 20px rgba(0, 0, 0, 0.63);
-		/* outline: double tomato; */
-		text-decoration: overline;
 	}
 
 	75% {
 		text-shadow: 20px 20px 20px rgba(0, 0, 0, 0.63);
-		/* outline: double dodgerblue */
 	}
 
 	100% {
 		color: transparent;
 		text-shadow: whitesmoke;
-		text-decoration-line: underline;
+		background: url("./header.JPG");
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
 	}
 
 }
@@ -584,20 +578,20 @@ h5, h6 {
 }
 
 #yourDeck {
-	background: url("./hand.png"), transparent;
+	background: black;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
-	border: solid transparent;
+	/* border: solid transparent; */
 	
 }
 
 #cpuDeck {
-	background: url("./hand.png"), transparent;
+	background: black;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
-	border: solid transparent;
+	/* border: solid transparent; */
 }
 
 .btn:hover {
@@ -606,10 +600,11 @@ h5, h6 {
 }
 
 #modalClose {
-	background: url("./hand.png"), black;
+	background: black;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+	color: yellow;
 }
 
 /* .hand {
