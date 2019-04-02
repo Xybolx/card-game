@@ -26,7 +26,6 @@
 
 .card {
 	padding: 10px;
-	/* border: solid 1px #808080; */
 	background-color: white;
 	display: inline-block;
 	border-radius: 10px;
@@ -413,7 +412,6 @@
 
 #draw:hover {
 	color: yellow;
-	/* border: double white; */
 }
 
 .card .suit {
@@ -455,10 +453,6 @@
 	outline-color: tomato;
 	outline-width: thick;
 	background: rgba(8, 5, 0, 0.863);
-	/* background: url("./table.png");
-	background-size: contain;
-	background-repeat: no-repeat; 
-	background-position: center; */
 	background: url("./table.png"), rgba(0, 0, 0, 0.726);
 	background-size: contain;
 	background-position: center;
@@ -470,7 +464,6 @@ h1 {
 	color: black;
 	text-shadow: 1px 1px 10px whitesmoke;
 	padding-bottom: 20px;
-	/* animation: color-change 2s ease-in-out infinite; */
 	background: url("./fire.gif"), url("./card-hand.png");
 	background-blend-mode: multiply;
 	background-size: contain;
@@ -522,7 +515,6 @@ h5, h6 {
 @keyframes color-change2 {
 	0% {
 		text-shadow: 20px 20px 20px whitesmoke;
-		/* text-decoration-line: line-through;  */
 		background: url("./ace_of_spades.png");
 		background-size: contain;
 		background-position: center;
@@ -532,7 +524,6 @@ h5, h6 {
 
 	25% {
 		text-shadow: 20px 20px 20px transparent;
-		/* text-decoration-line: line-through;  */
 		background: url("./header2.jpg");
 		background-size: contain;
 		background-position: center;
@@ -573,7 +564,6 @@ h5, h6 {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
-	/* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
 }
 
 #yourWins {
@@ -627,18 +617,11 @@ h5, h6 {
 	color: yellow;
 }
 
-/* .hand {
-	background: url("./table.png");
-	background-size: contain;
-	background-position: center;
-	background-repeat: no-repeat;
-} */
  body {
 	background: url("./War.jpg");
 }
 
 #compare {
-	/* outline: double whitesmoke; */
 	background: url("./fire.gif");
 	background-size: contain;
 	background-repeat: repeat-x;
